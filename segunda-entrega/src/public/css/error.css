@@ -1,0 +1,96 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr 6fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+                      "mensaje"
+                      "codigo"
+                      "regresar"
+                      "imagen";
+  justify-items: center;
+  align-items: center;
+}
+
+h1 {
+  display: grid;
+  grid-area: mensaje;
+
+}
+div {
+    display: grid;
+    grid-area: codigo;
+    cursor: pointer;
+    margin: 20px;
+    padding: 10px 20px;
+    animation-name: error;
+    animation-duration: 500ms;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+  }
+  
+  div:hover {
+    animation-play-state: paused;
+  }
+  
+  @keyframes error {
+    0% {
+      background-color:dodgerblue;
+      transform: rotate(15deg);
+    }
+    100% {
+      background-color:darkgrey;
+      transform: rotate(-15deg);
+    }
+  }
+
+  a {
+    display: grid;
+    grid-area: regresar;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+
+  a:hover {
+    color: black;
+    text-decoration-line: underline;
+  }
+
+  img {
+    display: grid;
+    grid-area: imagen;
+    width: 400px;
+    height: 400px;
+  }
+
+                                                    /*Aquí inicia mi disenho responsivo*/
+  @media (max-width: 600px) {
+
+    body {
+      grid-template-rows: 0.5fr 1fr 0.5fr 2fr;
+    }
+
+    h1 {
+      font-size: 1em;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  @media (max-width: 400px) {
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }

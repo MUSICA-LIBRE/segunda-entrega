@@ -1,0 +1,46 @@
+<%- include('template/header', {
+    estilo: '../css/contacto.css'
+    }) %>
+
+<body id="pagina-contacto">
+    <!-- Crear menú principal -->
+    <header>
+        <ul class="menu-principal">
+            <li class="inicio"><a href="http://localhost:2000/musicalibre/inicio">Inicio</a></li>
+            <li class="entrar"><a href="http://localhost:2000/musicalibre/entrar">Entrar</a></li>
+            <li class="libreria"><a href="http://localhost:2000/musicalibre/libreria">Librería</a></li>
+            <li class="contacto"><a href="#">Contacto</a></li>
+        </ul>
+    </header>
+    <main id="centro-de-pagina">
+        <div class="contenedor">
+            <div class="contenedor-contacto">
+                <form action="http://localhost:2000/musicalibre/contacto" method="POST" class="form">
+                    <div class="form-encabezado">
+                        <h1 class="form-titulo">C<span>ontacto</span></h1>
+                    </div>
+                    <label for="nombre" class="form-etiqueta">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" class="form-entrar" required="true" placeholder="Ej: Juán Pérez">
+
+                    <label for="direccion" class="form-etiqueta">Dirección:</label>
+                    <input type="text" name="direccion" id="direccion" class="form-entrar" required="true" placeholder="Ej: Habana. Cuba">
+
+                    <label for="correo" class="form-etiqueta">Correo Electrónico:</label>
+                    <input type="email" name="correo" id="correo" class="form-entrar" required="true" placeholder="Ej: correo@gmail.com">
+
+                    <label for="mensaje" class="form-etiqueta">Mensaje:</label>
+                    <textarea name="mensaje" id="mensaje" class="form-area-texto" placeholder="Escriba su mensaje"></textarea>
+
+                    <input type="submit" class="btn-enviar" value="Enviar consulta">
+                </form>
+            </div>
+
+<%- include('template/body') %>
+
+        </div>
+    </main>
+
+<%- include('template/footer') %>
+
+</body>
+</html>

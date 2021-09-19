@@ -1,0 +1,60 @@
+Breve explicación:
+
+-Inicio: Nos da una página de presentación con un menú de navegación que está presente en el resto de las páginas, al igual que el footer que 
+contiene las redes sociales, los términos y condiciones, además de la política de privacidad. Se destaca el botón ‘biblioteca de audio’ ya 
+que el interés principal es su acceso.
+
+-Entrar: En esta página el usuario podrá registrarse y/o autenticarse, en el botón entrar el login se efectúa con correo@gmail.com y clave 123 
+(no tenemos base de datos aún), los campos son obligatorio y cualquier error al autenticarse se enviará un flashmessage al igual que si hay 
+suceso. En registrarse los campos nombre y email son obligatorios y las claves tienen que coincidir, además hay que aceptar los términos para 
+que quede registrado. Algún error como claves diferentes se re-direcciona a una página de error. Los botones de entrar y registrar abren y 
+cierran las casillas o pueden cerrar con el símbolo de cierre en las casillas.
+
+-Librería: De momento cuenta con un demo que puede enviarse al reproductor tocando sobre el icono de cargar audio y ahí se activa el 
+reproductor. Tenemos un botón para ir al tope de la página. Se puede descargar el demo tocando en el icono correspondiente; pero primeramente 
+el usuario tiene que estar autenticado, así que al tocar el icono será re-direccionado a la página de entrar y verá un flashmessage 
+informando lo acontecido. Si descarga el demo será enviada una notificación del sistema (Si aceptó recibir notificaciones). En el futuro las 
+notificaciones serán para avisar de nuevos tracks subidos, entre otras cosas (ahora es solo un ejemplo demostrativo). De acontecer algún 
+error en la descarga se re-enviará a una página de error.
+
+-Notificaciones: Utilizar las ventajas de las "progressive web apps". Como la solicitud de autorización se realiza una sola vez y si el 
+usuario no acepta, nunca más será enviada tal solicitud, es muy importante saber cuándo enviarla. Fue programada para que se envíe una doble 
+notificación, es decir, enviar una nuestra (falsa con un pop-up) que de no ser aceptada puede ser enviada en otra ocasión y de ser aceptada 
+le enviamos la notificación verdadera. Esta operación se realizará solo cuando entre a la biblioteca de audio, después de un tiempo definido, 
+nunca al momento que entra el usuario y serán guardadas variables en el navegador del usuario para saber si ya ha sido notificado 
+anteriormente o si ya ha aceptado o negado el servicio. Las notificaciones de nuevo contenido que lleguen a los usuarios, además de la 
+información contarán con un botón de acción que permitirá abrir el sitio o enfocarlo en caso de que lo tenga abierto en el navegador junto 
+a otros sitios, facilitando el acceso y todas las ventajas que esto trae consigo (tráfico, fidelización, reconocimiento de marca etc.) 
+
+-Contactos: En esta página los tres primeros campos (nombre, dirección y email) son obligatorios, el mensaje es comprobado que no esté vacío, 
+de estarlo, se re-envía a una página de error. De tener suceso es reenviado a la página de inicio.
+
+-Manejo de errores: Los errores en rutas te re-direccionan a una página de error 404.
+
+-Diseño responsivo: Fue comprobado para Chrome en los simuladores de dispositivos, particularmente en iPhone 5/SE y iPad (tanto vertical como 
+horizontal). Presentamos un menú hamburguesa y retiramos el footer.
+
+-Consola: Usamos colores para diferenciar con facilidad los datos mostrados. Se muestra el servidor corriendo por su respectivo puerto y el 
+entorno de ejecución. Al registrarte te muestra los datos y las claves encriptadas. Al autenticarte te muestra los datos del usuario 
+(id, nombre, rol) el mail y la clave (encriptada) usada para hacer login. Al enviar contacto igualmente nos muestra la información. Muestra 
+las veces que has entrado a la biblioteca de audios y el número de descargas exitosas realizadas.
+
+Módulos usados:
+1.	Internos de Nodejs
+    path (Para unir caminos en diferentes sistemas operativos path.join)
+    http (Para las notificaciones enviadas desde el servidor http.get)
+2.	Externos (de terceros)
+    express (Crear servidor)
+    ejs (Motor de plantillas)
+    cookie-parser (Manejo de cookies)
+    express-session (Manejo de sesiones)
+    passport (Manejo de login)
+    passport-local (Estrategia)
+    web-push (Enviar notificaciones)
+    connect-flash (Enviar mensajes entre páginas)
+    bcryptjs (Para encriptar las claves de usuarios)
+    config (Para manejar variables de entorno)
+    chalk (Colores para la consola a nivel de dependencia de desarrollo)
+
+APIs:
+    DOM, PUSH, NOTIFICATION, FETCH, WINDOWS, URL

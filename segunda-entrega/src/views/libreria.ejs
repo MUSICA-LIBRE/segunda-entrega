@@ -1,0 +1,135 @@
+<%- include('template/header', {
+    estilo: '../css/libreria.css'
+    }) %>
+
+<body id="pagina-libreria">
+    <!-- Crear menú principal -->
+    <header>
+        <ul class="menu-principal">
+            <li class="inicio"><a href="http://localhost:2000/musicalibre/inicio">Inicio</a></li>
+            <li class="entrar"><a href="http://localhost:2000/musicalibre/entrar">Entrar</a></li>
+            <li class="libreria"><a href="#">Librería</a></li>
+            <li class="contacto"><a href="http://localhost:2000/musicalibre/contacto">Contacto</a></li>
+        </ul>
+    </header>
+    <!-- Crear main -->
+    <main id="centro-de-pagina">
+        <div class="contenedor">
+            <div class="buscador">
+                <h1>Música sin restricción para tus proyectos</h1>
+                <img class="vinilo" src="../images/vinyl-pixabay-no-copyright-pictures.png"
+                    alt="Muchos discos de vinilo">
+                <div class="blanco"></div>
+                <img class="logo" src="../images/poster5_16_104838.jpeg" alt="Logo de Música Libre">
+                <form action="#">
+                    <!-- Buscar por título -->
+                    <button id="buscar-titulo"><img class="lupa-buscar" src="../images/busqueda-de-lupa.png"
+                            alt="Lupa"></button>
+                    <input id="titulo" type="text" name="titulo" autofocus placeholder="Título ">
+                    <!-- Buscar por artista -->
+                    <button id="buscar-artista"><img class="lupa-buscar" src="../images/busqueda-de-lupa.png"
+                            alt="Lupa"></button>
+                    <input id="artista" type="text" name="artista" placeholder="Artista">
+                    <!-- Buscar por género -->
+                    <button id="buscar-genero"><img class="etiqueta" src="../images/etiqueta.png"
+                            alt="Etiqueta"></button>
+                    <select name="genero" id="genero">
+                        <option value="" disabled selected>Género</option>
+                        <option value="genero-alternative">Alternative</option>
+                        <option value="genero-ambient">Ambient</option>
+                        <option value="genero-bass">Bass</option>
+                        <option value="genero-chill">Chill</option>
+                        <option value="genero-drum-bass">Drum & Bass</option>
+                        <option value="genero-drumstep">Drumstep</option>
+                        <option value="genero-dubstep">Dubstep</option>
+                        <option value="genero-edm">EDM</option>
+                        <option value="genero-electronic">Electronic</option>
+                        <option value="genero-future-house">Future House</option>
+                        <option value="genero-future-pop">Future Pop</option>
+                        <option value="genero-hardstyle">Hardstyle</option>
+                        <option value="genero-house">House</option>
+                        <option value="genero-indie">Indie</option>
+                        <option value="genero-melodic-dubstep">Melodic Dubstep</option>
+                        <option value="genero-n/a">N/A</option>
+                        <option value="genero-trap">Trap</option>
+                    </select>
+                </form>
+            </div>
+            <div id="reproductor-audio">
+                <!-- Crear un div donde se mostrará la onda de sonido al reproducir -->
+                <div id="audio-spectrum"></div>
+                <!-- Crear botones de acciones del reproductor -->
+                <section class="btn-control">
+                    <input type="image" id="btn-play" src="../images/tocar.png" disabled="disabled" />
+                    <input type="image" id="btn-pause" src="../images/pausa.png" disabled="disabled" />
+                    <input type="image" id="btn-stop" src="../images/detener.png" disabled="disabled" />
+                </section>
+            </div>
+            <!-- Crear lista de temas -->
+            <div class="listado">
+                <ul class="fila-comun">
+                    <li>Título</li>
+                    <li>Artista</li>
+                    <li>Género</li>
+                </ul>
+                <ul class="fila-uno">
+                    <li><a id="miAudio" href="#" title="Cargar al reproductor"
+                            type="http://localhost:2000/music/eye-tiger.mp3"><img id="cargarTrack"
+                                class="boton-reproducir" src="../images/boton-cargar-audio.png"
+                                alt="Reproducir"></a>
+                    </li>
+                    <li>Probar</li>
+                    <li>Artista 1</li>
+                    <li>Género 1</li>
+                    <li><a class="descargar" href=<%=eyeTiger%>><img class="boton-descargar"
+                            src="../images/flecha-hacia-abajo.png" alt="Descargar"></a></li>
+                </ul>
+                <ul class="fila-dos">
+                    <li><a class="reproducir" href="#"><img class="boton-reproducir"
+                                src="../images/boton-cargar-audio.png" alt="Reproducir"></a></li>
+                    <li>Vacío</li>
+                    <li>Vacío</li>
+                    <li>Vacío</li>
+                    <li><a class="descargar" href="#"><img class="boton-descargar"
+                            src="../images/flecha-hacia-abajo.png" alt="Descargar"></a></li>
+                </ul>
+            </div>
+        </div>
+
+<%- include('template/body') %>
+
+        <!-- Flecha ir arriba -->
+        <a class="ir-arriba"><img class="flecha-arriba" src="../images/ir-directamente.png"
+                alt="Flecha hacia arriba"></a>
+
+    </main>
+
+     <!-- Ventana Modal (pop up) autorizo de notificaciones -->
+     <section id="sectionModal">
+        <input type="checkbox" id="cerrar">
+        <label for="cerrar" id="btn-cerrar">X</label>
+        <div id="modal" class="modal">
+            <div class="contenido" >
+                <h1 class="h1-modal">Autorización de Notificaciones</h1>
+                <h4>Desea ser notificado cuando subamos un nuevo tema?</h4>
+                <h3>No necesita ingresar datos.</h3>
+                <img class="img-modal" src="../images/poster5_16_104838.jpeg" alt="Imagen música libre">
+                <input type="button" id="btn-aceptar" class="btn-aceptar" value="Aceptar">
+            </div>
+        </div>
+    </section>
+
+  
+<%- include('template/footer') %>
+
+    <!-- Cargar el script de wavesurfer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.3.7/wavesurfer.min.js"></script>
+    <!-- Cargamos Jquery botón ir arriba-->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- scripts de la página -->
+    <script src="../scripts/libreria.js"></script>
+    <!-- scripts registro de serviceWorker, push y notification -->
+    <script src="../scripts/notificaciones.js"></script>
+    
+</body>
+</html>

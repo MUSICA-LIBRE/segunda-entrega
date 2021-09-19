@@ -1,0 +1,346 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+:root {
+  /*Colores en: https://coolors.co/*/
+  --negro: #000000;
+  --azulOscuro: #001219;
+  --azulMenosOscuro: #005f73;
+  --azulClaro: #0a9396;
+  --azulCeleste: #94d2bd;
+  --gris: #b7b7a4;
+  --grisRosa: #e9d8a6;
+  --blanco: #fffffc;
+  --amarrillo: #ee9b00;
+  --carmelita: #ca6702;
+  --naranja: #bb3e03;
+  --rojo: #ae2012;
+  --marrón: #9b2226;
+}
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 8fr 1fr;
+  grid-template-areas:
+    "navegacion-principal"
+    "texto-central"
+    "redes-pie-de-pagina";
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--negro);
+  font-family: "Benne", serif;
+  color: var(--blanco);
+}
+                                                          /*Aquí comienza mi header*/
+header {
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-area: navegacion-principal;
+  background-color: var(--negro);
+  height: 100%;
+  width: 100%;
+}
+.menu-principal {
+  display: grid;
+  align-items: center;
+  list-style: none;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+}
+.menu-principal > li > a {
+  display: grid;
+  margin: 0 5vw;
+  width: 100px;
+  height: 40px;
+  background: none;
+  text-decoration: none;
+  color: var(--blanco);
+  text-align: center;
+  font-weight: 600;
+  font-size: 24px;
+}
+.menu-principal > li > a:hover {
+  outline: 1px solid var(--blanco);
+}
+body#pagina-inicial ul.menu-principal li:nth-child(1) a,
+body#pagina-entrar ul.menu-principal li:nth-child(2) a,
+body#pagina-libreria ul.menu-principal li:nth-child(3) a,
+body#pagina-contacto ul.menu-principal li:nth-child(4) a {
+  border-bottom: 4px solid var(--naranja);
+  outline: none;
+  cursor: none;
+}
+.inicio {
+  display: grid;
+  grid-column: 1 / 2;
+}
+.entrar {
+  display: grid;
+  grid-column: 2 / 3;
+}
+.libreria {
+  display: grid;
+  grid-column: 3 / 4;
+}
+.contacto {
+  display: grid;
+  grid-column: 4 / 5;
+}
+                                                    /*Aquí comienza mi footer*/
+footer {
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-area: redes-pie-de-pagina;
+  background-color: var(--negro);
+  height: 100%;
+  width: 100%;
+}
+.redes {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: 0 30px;
+}
+.facebook {
+  display: grid;
+  grid-column: 1 / 2;
+}
+.instagram {
+  display: grid;
+  grid-column: 2 / 3;
+}
+.youtube {
+  display: grid;
+  grid-column: 3 / 4;
+}
+.costv {
+  display: grid;
+  grid-column: 4 / 5;
+}
+.odysee {
+  display: grid;
+  grid-column: 5 / 6;
+}
+.spotify {
+  display: grid;
+  grid-column: 6 / 7;
+}
+ul.redes li > a > img {
+  width: 25px;
+  height: 25px;
+  transition-property: transform;
+  transition-duration: 10ms;
+  transition-delay: 0;
+  transition-timing-function: linear;
+}
+ul.redes li > a > img:hover {
+  transform: scale(1.5, 1.5);
+}
+h5 {
+  text-align: center;
+  color: var(--azulMenosOscuro);
+}
+.span-footer {
+  font-size: 15px;
+  color: var(--azulMenosOscuro);
+}
+.copyright {
+  width: 10px;
+  height: 10px;
+}
+.terminos-condiciones {
+  background: none;
+  outline: none;
+  text-decoration: none;
+  color: var(--blanco);
+}
+.terminos-condiciones:hover {
+  color: var(--azulCeleste);
+}
+                                                          /*Aquí inicia mi main*/
+
+/*Aquí inicia mi menú hamburguesa*/
+#menu_on {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  display: inline-block;
+  width: 30px;
+  height: 20px;
+}
+#menu_on span {
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  display: block;
+  position: absolute;
+  background: var(--blanco);
+  transition: all 0.25s ease;
+  transform-origin: 0px 100%;
+}
+#menu_on span:nth-child(2) {
+  top: calc(50% - 2px);
+}
+#menu_on span:nth-child(3) {
+  bottom: 0;
+}
+div.nav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -300px;
+  width: 110px;
+  z-index: 1;
+  padding: 100px 20px 20px;
+  background: var(--azulOscuro);
+  opacity: 0;
+  transition: all 0.75s ease;
+  font-size: 1.2em;
+  overflow-y: auto;
+}
+.menu-hamburguesa {
+  display: block;
+}
+ul.menu-hamburguesa > li > a {
+  text-align: left;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: border ease 0.25s;
+}
+.menu-hamburguesa > li > a:hover {
+  color: rgba(255, 255, 255, 1);
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+}
+.visible_menu span:nth-child(1) {
+  transform: rotate(45deg) translate(-2px, 1px);
+}
+.visible_menu span:nth-child(2) {
+  opacity: 0;
+}
+.visible_menu span:nth-child(3) {
+  transform: rotate(-45deg) translate(-3px, 3px);
+}
+.visible_menu .nav {
+  right: 0;
+  opacity: 1;
+}
+.nav > ul {
+  list-style: none;
+}
+/*Centro de página*/
+#centro-de-pagina {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-area: texto-central;
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  align-items: center;
+  background: url(../images/concert-Imagen\ de\ Vishnu\ R\ en\ Pixabay-no-copyright-pictures.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+.contenedor {
+  display: grid;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.contenedor-contacto .form {
+  background-color: rgb(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 650px;
+  margin: auto;
+  padding: 0 35px;
+  padding-bottom: 20px;
+  border-radius: 3px;
+}
+.contenedor-contacto .form .form-encabezado .form-titulo {
+  font-weight: normal;
+  color: var(--amarrillo);
+  text-align: center;
+  padding: 10px 0;
+}
+.contenedor-contacto .form .form-encabezado .form-titulo span {
+  color: var(--blanco);
+}
+.contenedor-contacto .form .form-etiqueta {
+  display: block;
+  position: relative;
+  color: var(--amarrillo);
+  font-size: 16px;
+}
+.contenedor-contacto .form .form-entrar,
+.form-area-texto {
+  background-color: rgb(0, 0, 0, 0.7);
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--amarrillo);
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  color: var(--blanco);
+}
+.contenedor-contacto .form .form-area-texto {
+  resize: vertical;
+  max-height: 150px;
+  min-height: 50px;
+}
+.contenedor-contacto .form .btn-enviar {
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px 0;
+  background-color: var(--amarrillo);
+  border-radius: 2px;
+  font-size: 16px;
+  color: var(--blanco);
+  transition: all 0.5s ease;
+}
+.contenedor-contacto .form .btn-enviar:hover {
+  opacity: 0.5;
+}
+                                                        /*Aquí inicia mi disenho responsivo*/
+                                                        
+/*Para que mi menú hamburguesa solo esté disponible para moviles*/
+@media (min-width: 600px) {
+  nav {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+ header {
+  display: none;
+ }
+ footer {
+  display: none;
+ }
+}
+/*Movil Horizontal 568px Max*/
+@media (max-width: 568px) {
+  body {
+    grid-template-rows: 1fr;
+    grid-template-areas: "texto-central";
+  }
+  .contenedor-contacto .form .form-entrar,
+  .form-area-texto {
+    margin-bottom: 10px;
+  }
+  .contenedor-contacto .form {
+    max-width: 300px;
+    margin-top: 25px;
+    padding-bottom: 25px;
+  }
+}

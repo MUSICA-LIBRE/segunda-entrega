@@ -1,0 +1,34 @@
+{
+  "name": "segunda-entrega-roque",
+  "version": "0.0.1",
+  "description": "Creando servidor a mi sitio web con nodejs y express",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon src/app.js"
+  },
+  "keywords": [
+    "música-libre",
+    "copyright-free-music",
+    "descargas-mp3",
+    "descargas-gratis",
+    "descargas-seguras",
+    "librería-actualizada"
+  ],
+  "author": "Yudieskel Roque Cardentey",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.6",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "web-push": "^3.4.5"
+  },
+  "devDependencies": {
+    "chalk": "^4.1.2"
+  }
+}

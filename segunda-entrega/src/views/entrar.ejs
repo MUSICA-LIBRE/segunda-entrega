@@ -1,0 +1,118 @@
+<%- include('template/header', {
+    estilo: '../css/entrar.css'
+    }) %>
+
+<body id="pagina-entrar">
+    <!-- Crear menú principal -->
+    <header>
+        <ul class="menu-principal">
+            <li class="inicio"><a href="http://localhost:2000/musicalibre/inicio">Inicio</a></li>
+            <li class="entrar"><a href="#">Entrar</a></li>
+            <li class="libreria"><a href="http://localhost:2000/musicalibre/libreria">Librería</a></li>
+            <li class="contacto"><a href="http://localhost:2000/musicalibre/contacto">Contacto</a></li>
+        </ul>
+    </header>
+
+<%- include('template/body') %>
+
+    <!-- Centro de página -->
+    <main id="centro-de-pagina">
+        <div class="contenedor">
+            <div class="entrar-registrar">
+                <h1>Estás solo a un paso!</h1>
+                <img class="onda-sonido" src="../images/Música Libre Onda.png" alt="Onda de sonido">
+                <div class="blanco"></div>
+                <img class="logo" src="../images/poster5_16_104838.jpeg" alt="Logo de Música Libre">
+
+                <!-- Entrar (login) -->
+                <section id="s1" class>
+                    <div id="envoltura-entrar">
+                        <div>
+                            <a href="#" id="a1-entrar" class="entrar_on">Entrar</a>
+                        </div>
+                        <div class="abrir-entrar">
+                            <a class="entrar_on" href="#"><img class="boton-cerrar-entrar" src="../images/boton-eliminar.png"
+                                    alt="Cerrar"></a>
+                            <div class="contenedor-entrar">
+                                <img class="logo-entrar" src="../images/poster5_16_104838.jpeg"
+                                    alt="Logo de Música Libre">
+                                <h1>Entrar aquí</h1>
+                                <form action="http://localhost:2000/musicalibre/login" method="POST">
+                                    <!-- Usuario -->
+                                    <label for="username">Usuario:</label>
+                                    <input type="email" id="username" name="email" required="true" title="correo@gmail.com" placeholder="Ej: correo@gmail.com" />
+                                    <!-- Clave -->
+                                    <label for="password">Clave:</label>
+                                    <input type="password" id="password" name="password" required="true" title="123" placeholder="Entre su Clave" />
+                                    <!-- Entrar -->
+                                    <input type="submit" value="Entrar" />
+                                    <!-- Recuperar Clave -->
+                                    <a href="#">Olvidó su Clave?</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Registrar (signup) -->
+                <section id="s2" class>
+                    <div id="envoltura-registrar">
+                        <div>
+                            <a href="#" id="a1-registrar" class="registrar_on">Registrarse</a>
+                        </div>
+                        <div class="abrir-registrar">
+                            <a class="registrar_on" href="#"><img class="boton-cerrar-registrar"
+                                    src="../images/boton-eliminar.png" alt="Cerrar"></a>
+                            <div class="contenedor-registrar">
+                                <img class="logo-registrar" src="../images/poster5_16_104838.jpeg"
+                                    alt="Logo de Música Libre">
+                                <h1>Registrarse aquí</h1>
+                                <form action="http://localhost:2000/musicalibre/signup" onsubmit="return validarFormulario();" method="POST">
+                                    <!-- Nombre -->
+                                    <label for="name">Nombre:</label>
+                                    <input type="text" id="name" name="nombre" required="true" placeholder="Ej: Juán Pérez" />
+                                    <!-- Usuario -->
+                                    <label for="user-name">Email:</label>
+                                    <input type="email" id="user-name" name="correo" required="true" placeholder="Ej: correo@gmail.com" />
+                                    <!-- Clave -->
+                                    <label for="password1">Clave:</label>
+                                    <input type="password" id="password1" name="clave1" required="true" placeholder="Entre su Clave" />
+                                    <label for="password2">Clave:</label>
+                                    <input type="password" id="password2" name="clave2" required="true" placeholder="Repita su Clave" />
+                                    <!-- Checkbox Términos y Condiciones -->
+                                    <input type="checkbox" name="terminos" id="terminos">
+                                    <label class="terminos" for="terminos"><a class="terminos-condiciones" target="_blank" href="http://localhost:2000/musicalibre/terminos">Términos</a></label>
+                                    <!-- Registrar -->
+                                    <span id="info"></span>
+                                    <input type="submit" value="Registrar"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <% if (error_message) {%>
+            <span class="span-flash"><img class="img-flash" src="../images/precaucion.png" alt="Triángulo amarillo, precaución"></span>
+            <span class="span-flash"><%= error_message %></span>
+        <% } %>
+        
+        <% if (success_message) {%>
+            <span class="span-flash"><img class="img-flash" src="../images/check.png" alt="Tip verde, chequeado."></span>
+            <span class="span-flash"><%= success_message %></span>
+            <% } %>
+
+        <% if (libreria) {%>
+            <span class="span-flash"><img class="img-flash" src="../images/precaucion.png" alt="Triángulo amarillo, precaución"></span>
+            <span class="span-flash"><%= libreria %></span>
+        <% } %>
+
+    </main>  
+
+<%- include('template/footer') %>
+
+<script src="../scripts/entrar.js"></script>
+
+</body>
+</html>
